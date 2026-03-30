@@ -77,6 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Menurut saya, untuk kasus BambangShop saat ini cukup pakai satu struct Subscriber. Soalnya Subscriber yang ada sekarang hanya menyimpan data seperti url dan name, belum punya perilaku yang berbeda-beda. Interface atau trait biasanya dibutuhkan kalau ada beberapa jenis subscriber dengan cara kerja yang berbeda, tetapi semuanya harus mengikuti aturan yang sama. Jadi, karena di sini subscriber masih sederhana dan hanya sebagai model data, struct saja sudah cukup. Namun, kalau nanti ada banyak jenis subscriber dengan cara notifikasi berbeda, barulah trait akan lebih berguna.
+
+2. Kalau url pada Subscriber memang harus unik, menurut saya DashMap lebih cocok daripada Vec. Vec sebenarnya masih bisa dipakai, tetapi setiap kali ingin mencari, mengecek duplikasi, atau menghapus subscriber, kita harus memeriksa satu per satu isi list. Itu kurang efisien. Dengan DashMap, url bisa dijadikan key, jadi pencarian, penambahan, dan penghapusan data jadi lebih cepat dan lebih sesuai dengan kebutuhan data yang unik. Jadi, Vec masih bisa jalan, tetapi DashMap lebih tepat untuk kasus ini.
+
+3. Menurut saya, Singleton dan DashMap itu berbeda fungsi. Singleton hanya memastikan bahwa data SUBSCRIBERS punya satu instance global yang dipakai bersama. Namun, Singleton saja tidak cukup untuk membuat akses data menjadi aman kalau dipakai banyak thread sekaligus. Nah, DashMap dipakai karena dia thread-safe, jadi lebih aman untuk program Rust yang bisa berjalan secara concurrent. Jadi, jawabannya adalah Singleton saja tidak cukup. Kalau ingin aman untuk banyak thread, kita tetap butuh DashMap atau mekanisme thread-safe lain seperti Mutex atau RwLock.
 
 #### Reflection Publisher-2
 
