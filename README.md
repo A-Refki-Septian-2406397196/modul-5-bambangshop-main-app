@@ -91,3 +91,9 @@ This is the place for you to write reflections:
 3. Ya, saya sudah mencoba mengeksplorasi Postman, dan menurut saya tool ini sangat membantu untuk menguji API yang sedang saya kerjakan. Dengan Postman, saya bisa langsung mengirim request ke endpoint seperti subscribe dan unsubscribe tanpa harus membuat frontend terlebih dahulu. Saya juga bisa mengecek apakah request body, parameter, response, dan status code sudah sesuai harapan. Hal ini sangat membantu saat debugging karena saya bisa lebih cepat menemukan kesalahan pada endpoint atau logika program. Fitur Postman yang menurut saya paling berguna adalah collection untuk menyimpan request, pengaturan body dan query parameter, serta tampilan response yang jelas. Untuk project kelompok atau project ke depan, Postman akan membantu dalam testing API secara lebih cepat, terstruktur, dan berulang.
 
 #### Reflection Publisher-3
+
+1. Menurut saya, tutorial ini menggunakan push model. Soalnya publisher langsung mengirim data notifikasi ke subscriber. Jadi subscriber tidak perlu mengambil data lagi sendiri, karena informasi yang dibutuhkan sudah langsung dikirim.
+
+2. Kalau memakai pull model, subscriber hanya diberi tahu bahwa ada perubahan, lalu dia harus mengambil sendiri data dari publisher. Kelebihannya, publisher jadi lebih sederhana dan subscriber bisa memilih data apa yang ingin diambil. Tapi kekurangannya, proses jadi lebih panjang dan komunikasi antar sistem jadi lebih banyak. Untuk kasus tutorial ini, menurut saya push model lebih cocok.
+
+3. Kalau tidak memakai multi-threading, notifikasi akan dikirim satu per satu. Ini membuat proses lebih lambat, apalagi kalau subscriber banyak atau ada yang responsnya lama. Jadi program tetap bisa berjalan, tetapi kurang efisien.
